@@ -37,6 +37,7 @@
       <th scope="col">USUARIO</th>
       <th scope="col">DNI</th>
       <th scope="col">CODIGO</th>
+      <th scope="col">ACCIONES</th>
     </tr>
   </thead>
   
@@ -48,6 +49,7 @@
   <td><a href="verUsuario?id=<%=usuario.getId()%>"><%=usuario.getNombreApellido()%></a></td>
   <td><%=usuario.getDni() %></td>
   <td><%=usuario.getCodigo() %></td>
+  <td><a class="btn btn-danger btn-md" href="EliminarUsuario?id=<%=usuario.getId()%>" role="button">Borrar</a> </td>
   </tr>
   <% } %>
   
