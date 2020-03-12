@@ -1,13 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
-    <%@page import="java.util.ArrayList" %>
-    <%@page import="modelo.bean.Actividad" %>
-    
-    <%
-    ArrayList<Actividad> actividades= (ArrayList<Actividad>)request.getAttribute("actividades");
-    %>
-    
 <!doctype html>
 <html lang="en">
   <head>
@@ -18,49 +10,56 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Actividades</title>
+    <title>CrearActividad</title>
   </head>
   <body>
   <div class="container">
   
-  <h1 class="text-center">Actividades</h1>
+  <h1 class="text-center">Crear actividad</h1>
   
-  <div class="row justify-content-center mt-2 text-center">
-  <div class="col">
+  <div class="row justify-content-center mt-4">
   
- <table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">NOMBRE</th>
-      <th scope="col">FECHA INICIO</th>
-      <th scope="col">DIAS SEMANA</th>
-      <th scope="col">ACCIONES</th>
-    </tr>
-  </thead>
-  <tbody>
+  <div class="col-6">
   
-  <%for(int i=0; i<actividades.size(); i++) {
-  Actividad actividad=actividades.get(i);
-  %>
+  <form action="InsertarActividad" method="POST">
   
-    <tr>
-      <th><%=actividad.getNombre() %></th>
-      <td><%=actividad.getFecha_inicio() %></td>
-      <td><%=actividad.getDias() %></td>
-      <td>
-      <a class="btn btn-primary btn-md" href="verActividad?id=<%=actividad.getId()%>">VER</a>
-      <a class="btn btn-danger btn-md" href="EliminarActividad?id=<%=actividad.getId()%>" role="button">Borrar</a> 
-      </td>
-      
-      
-    </tr>
+  	<div class="form-group">
+    	<label for="nombre">Nombre Actividad:</label>
+    	<input type="text" class="form-control" id="nombre" name="nombre">
+    </div>
     
-    <%} %>
-  
-  </tbody>
-</table>
+    <div class="form-group">
+    	<label for="fecha_inicio">Fecha inicio:</label>
+    	<input type="text" class="form-control" id="fecha_inicio" name="fecha_inicio">
+    </div>
+    
+    <div class="form-group">
+    	<label for="dias_semana">Dias semana:</label>
+    	<input type="text" class="form-control" id="dias_semana" name="dias_semana">
+    </div>
+    
+    <div class="form-group">
+    	<label for="horas">Duracion (Horas):</label>
+    	<input type="text" class="form-control" id="horas" name="horas">
+    </div>
+    
+    <div class="form-group">
+    	<label for="max_participantes">Maximo numero de participantes:</label>
+    	<input type="text" class="form-control" id="max_participantes" name="max_participantes">
+    </div>
+    
+    <div class="form-group">
+    	<label for="precio">Precio:</label>
+    	<input type="text" class="form-control" id="precio" name="precio">
+  	</div>
+    
+    
+  	<button type="submit" class="btn btn-primary">Submit</button>
+  	
+</form>
   
   </div>
+  
   </div>
   
   </div>
