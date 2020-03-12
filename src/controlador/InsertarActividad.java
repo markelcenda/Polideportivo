@@ -46,6 +46,7 @@ public class InsertarActividad extends HttpServlet {
 		//inserta egin
 		
 		//VerActividades kontrolatzailerai deitu
+		response.sendRedirect("VerActividades");
 		
 	}
 
