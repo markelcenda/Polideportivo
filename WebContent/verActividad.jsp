@@ -49,7 +49,7 @@
 		<br>
 		<div class="row">
 			<div class="col text-center font-weight-bold">Precio</div>
-			<div class="col text-center font-weight-bold"><%=actividad.getPrecio() %>Eur</div>
+			<div class="col text-center font-weight-bold"><%=actividad.getPrecio() %> eurps</div>
 		</div>
 		<br>
 		<br>
