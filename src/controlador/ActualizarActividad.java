@@ -40,7 +40,7 @@ public class ActualizarActividad extends HttpServlet {
 		request.getRequestDispatcher("ActualizarActividad.jsp").forward(request, response);
 		
 		
-		//modeloActividad.update(actividad);
+		
 		
 		
 	}

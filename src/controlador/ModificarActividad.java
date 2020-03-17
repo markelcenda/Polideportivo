@@ -15,16 +15,16 @@ import modelo.bean.Actividad;
 import modelo.dao.ModeloActividad;
 
 /**
- * Servlet implementation class InsertarActividad
+ * Servlet implementation class ModificarActividad
  */
-@WebServlet("/InsertarActividad")
-public class InsertarActividad extends HttpServlet {
+@WebServlet("/ModificarActividad")
+public class ModificarActividad extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertarActividad() {
+    public ModificarActividad() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,21 +34,24 @@ public class InsertarActividad extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	//datuak jaso
 		
-		//datuak jaso
+		int idActividad=Integer.parseInt(request.getParameter("id"));
 		
 		String nombre=request.getParameter("nombre");
 		
 		Date fechaInicio=null;
 		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		
-		String dias=request.getParameter("dias_semana");
+		try {
+			fechaInicio=sdf.parse(request.getParameter("fecha_inicio"));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String diasSemana=request.getParameter("dias_semana");
 		
 		int horas=Integer.parseInt(request.getParameter("horas"));
 		
@@ -60,21 +63,15 @@ public class InsertarActividad extends HttpServlet {
 		
 		Actividad actividad=new Actividad();
 		
-		//jasotako datuekin setak egin
+		//setak egin
+		
+		actividad.setId(idActividad);
 		
 		actividad.setNombre(nombre);
 		
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
-		
-		try {
-			fechaInicio=sdf.parse(request.getParameter("fecha_inicio"));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		actividad.setFecha_inicio(fechaInicio);
 		
-		actividad.setDias(dias);
+		actividad.setDias(diasSemana);
 		
 		actividad.setHoras(horas);
 		
@@ -82,17 +79,27 @@ public class InsertarActividad extends HttpServlet {
 		
 		actividad.setPrecio(precio);
 		
-		//modeloa sortu
+		//Modeloa sortu
 		
 		ModeloActividad modeloActividad=new ModeloActividad();
 		
-		//inserta egin
+		//update egin
 		
-		modeloActividad.insert(actividad);
+		modeloActividad.update(actividad);
 		
-		//VerActividades kontrolatzailerai deitu
-		response.sendRedirect("VerActividades");
+		//VerActividadeseri deitu
 		
+		response.sendRedirect("verActividad?id=" + idActividad);
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		doGet(request, response);
+	
 	}
 
 }

@@ -50,6 +50,7 @@
       <td>
       <a class="btn btn-primary btn-md" href="verActividad?id=<%=actividad.getId()%>">VER</a>
       <a class="btn btn-danger btn-md" href="EliminarActividad?id=<%=actividad.getId()%>" role="button">Borrar</a> 
+      <a class="btn btn-warning btn-md text-white" href="ActualizarActividad?id=<%=actividad.getId()%>" role="button">Editar</a> 
       
       </td>
       
