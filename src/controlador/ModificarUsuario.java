@@ -1,6 +1,10 @@
 package controlador;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +17,16 @@ import modelo.dao.ModeloActividad;
 import modelo.dao.ModeloUsuario;
 
 /**
- * Servlet implementation class ActualizarUsuario
+ * Servlet implementation class ModificarUsuario
  */
-@WebServlet("/ActualizarUsuario")
-public class ActualizarUsuario extends HttpServlet {
+@WebServlet("/ModificarUsuario")
+public class ModificarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ActualizarUsuario() {
+    public ModificarUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,17 +36,42 @@ public class ActualizarUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//datuak jaso
+		
 		int idUsuario=Integer.parseInt(request.getParameter("id"));
 		
+		String nombreApellido=request.getParameter("nombreApellido");
+		
+		String dni=request.getParameter("dni");
+		
+		String codigo=request.getParameter("codigo");
+		
+		
+		
+		//sortu usuario objetu bat
+		
+		Usuario usuario=new Usuario();
+		
+		//setak egin
+		usuario.setId(idUsuario);
+		
+		usuario.setNombreApellido(nombreApellido);
+		
+		usuario.setDni(dni);
+		
+		usuario.setCodigo(codigo);
+		
+		//Modeloa sortu
+		
 		ModeloUsuario modeloUsuario=new ModeloUsuario();
-		Usuario usuario=modeloUsuario.get(idUsuario);
 		
-		request.setAttribute("usuario", usuario);
+		//update egin
 		
-		request.getRequestDispatcher("ActualizarUsuario.jsp").forward(request, response);
+		modeloUsuario.update(usuario);
 		
+		//verUsuarios-eri deitu
 		
-		
+		response.sendRedirect("verUsuario?id=" + idUsuario);
 		
 	}
 
@@ -50,8 +79,9 @@ public class ActualizarUsuario extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
+		
 	}
 
 }

@@ -49,7 +49,10 @@
   <td><a href="verUsuario?id=<%=usuario.getId()%>"><%=usuario.getNombreApellido()%></a></td>
   <td><%=usuario.getDni() %></td>
   <td><%=usuario.getCodigo() %></td>
-  <td><a class="btn btn-danger btn-md" href="EliminarUsuario?id=<%=usuario.getId()%>" role="button">Borrar</a> </td>
+  <td>
+  		<a class="btn btn-success text-white btn-md" href="ActualizarUsuario?id=<%=usuario.getId()%>" role="button">Editar</a>
+  		<a class="btn btn-danger btn-md" href="EliminarUsuario?id=<%=usuario.getId()%>" role="button">Borrar</a>
+  </td>
   </tr>
   <% } %>
   
@@ -57,6 +60,16 @@
   </table>
   
   </div>
+  </div>
+  
+    <div class="row justify-content-center text-center mt-3 mb-3">
+  
+  <div class="col-3">
+  
+  <a class="btn btn-success btn-md text-white" href="CrearUsuario">Crear</a>
+  
+  </div>
+  
   </div>
   
   </div>
