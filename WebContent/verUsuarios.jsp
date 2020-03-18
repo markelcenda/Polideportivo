@@ -67,6 +67,7 @@
   <div class="col-3">
   
   <a class="btn btn-success btn-md text-white" href="CrearUsuario">Crear</a>
+  <a class="btn btn-warning btn-md text-white" href="Home">Volver</a>
   
   </div>
   

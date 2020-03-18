@@ -44,7 +44,7 @@
                         
                     </div>
              
-                        <a class="btn btn-primary btn-lg mt-4" href="#" role="button">Editar</a>
+                        <a class="btn btn-primary btn-lg mt-4" href="ActualizarUsuario?id=<%=usuario.getId()%>" role="button">Editar</a>
                         <a class="btn btn-primary btn-lg mt-4" href="EliminarUsuario?id=<%=usuario.getId()%>" role="button">Borrar</a>
                     
                 </div>

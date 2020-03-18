@@ -39,6 +39,7 @@
     </div>
     
   	<button type="submit" class="btn btn-primary">Submit</button>
+  	 <a class="btn btn-warning btn-md text-white" href="verUsuarios">Cancelar</a>
   	
 </form>
   
