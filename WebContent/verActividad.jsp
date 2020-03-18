@@ -61,6 +61,7 @@
 		<div class="row justify-content-center mb-5">
 			<div class="col-2">
             	<a class="btn btn-primary btn-lg text-center" href="VerActividades" role="button">Volver</a>
+            	
         	</div>
 		</div>
 		

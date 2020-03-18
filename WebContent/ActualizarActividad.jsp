@@ -62,6 +62,7 @@
     
     
   	<button type="submit" class="btn btn-primary">Submit</button>
+  	<a type="submit" href="VerActividades" class="btn btn-success">Cancelar</a>
   
   </form>
   
