@@ -68,6 +68,60 @@
 		</div>
 		
 	</div>
+	
+	
+	<div class="container mt-5 mb-5 rounded border border-dark">
+		
+		<div class="row vertical align-items-center">
+		
+		<div class="col ">
+		
+		<h2>Formulario de inscripcion</h2>
+
+			<form action="InscribirUsuario" method="POST">
+    			<input type="hidden" value="${actividad.getId()}" name="idactividad">
+
+    			<select name="idusuarios">
+    			
+        			<option value="0">Selecciona el usuario</option>
+        	
+        			<c:forEach items="${usuarios}" var="usuario">
+        			
+        				<option value="${usuario.getId()}">${usuario.getNombreApellido()} - ${usuario.getCodigo()}</option>
+        				
+        			</c:forEach>
+        			
+      			</select>
+
+      			<input type="submit" value="Inscribir">
+
+			</form>
+		
+		</div>
+		
+		<div class="col">
+		
+		<h3 class="text-center">Usuarios inscritos</h3>
+		
+		<table class="table table-striped table-bordered text-center">
+		
+		<c:forEach items="${actividad.getIscripciones()}" var="inscripcion">
+		<tr>
+		<td><h5>${inscripcion.getUsuario().getNombreApellido()} - ${inscripcion.getUsuario().getCodigo()} </h5></td>
+		<td><a class="btn btn-danger btn-md text-center" href="BorrarInscripcion" role="button">Borrar inscripcion</a></td>
+		</tr>
+		</c:forEach>
+		
+		</table>
+		
+		
+		
+		
+		</div>
+		
+		</div>
+		
+	</div>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

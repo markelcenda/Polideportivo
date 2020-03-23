@@ -1,30 +1,25 @@
 package controlador;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.bean.Actividad;
-import modelo.bean.Usuario;
-import modelo.dao.ModeloActividad;
-import modelo.dao.ModeloUsuario;
+import modelo.dao.ModeloInscripcion;
 
 /**
- * Servlet implementation class verActividad
+ * Servlet implementation class InscribirUsuario
  */
-@WebServlet("/verActividad")
-public class verActividad extends HttpServlet {
+@WebServlet("/InscribirUsuario")
+public class InscribirUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public verActividad() {
+    public InscribirUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,27 +29,22 @@ public class verActividad extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int idActividad=Integer.parseInt(request.getParameter("id"));
-		
-		ModeloActividad modeloActividad=new ModeloActividad();
-		Actividad actividad=modeloActividad.getConUsuariosInscritos(idActividad);
-		
-		ModeloUsuario modeloUsuario=new ModeloUsuario();	
-		ArrayList<Usuario> usuarios=modeloUsuario.selectAll();
-		
-		request.setAttribute("actividad", actividad);
-		request.setAttribute("usuarios", usuarios);
-		
-		request.getRequestDispatcher("verActividad.jsp").forward(request, response);
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		int idUsuario=Integer.parseInt(request.getParameter("idusuarios"));
+		int idActividad=Integer.parseInt(request.getParameter("idactividad"));
+		
+		ModeloInscripcion modeloInscripcion=new ModeloInscripcion();
+		modeloInscripcion.inscribir(idUsuario, idActividad);
+		
+		response.sendRedirect("verActividad?id=" + idActividad);
+		
+		
 	}
 
 }
