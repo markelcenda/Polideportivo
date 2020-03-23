@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-    <%@page import="modelo.bean.Usuario"%>
-    <%Usuario usuario=(Usuario) request.getAttribute("usuario"); %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
     
 <!doctype html>
 <html lang="en">
@@ -28,24 +27,24 @@
                     <div class="row vertical align-items-center">
 
                         <div class="col">
-                            <h1><%=usuario.getNombreApellido()%></h1>
+                            <h1>${usuario.getNombreApellido()}</h1>
                         </div>
 
                         <div class="col">
-                            <h3>ID: <%=usuario.getId() %></h3>
+                            <h3>ID: ${usuario.getId()}</h3>
                         </div>
 
                     </div>
 
                     <hr class="my-2 bg-white">
                     <div class="textua text-center mt-3">
-                        <h5>DNI: <%=usuario.getDni() %></h5>
-                        <h5>CODIGO: <%=usuario.getCodigo()%></h5>
+                        <h5>DNI: ${usuario.getDni()}</h5>
+                        <h5>CODIGO: ${usuario.getCodigo()}</h5>
                         
                     </div>
              
-                        <a class="btn btn-primary btn-lg mt-4" href="ActualizarUsuario?id=<%=usuario.getId()%>" role="button">Editar</a>
-                        <a class="btn btn-primary btn-lg mt-4" href="EliminarUsuario?id=<%=usuario.getId()%>" role="button">Borrar</a>
+                        <a class="btn btn-primary btn-lg mt-4" href="ActualizarUsuario?id=${usuario.getId()}" role="button">Editar</a>
+                        <a class="btn btn-primary btn-lg mt-4" href="EliminarUsuario?id=${usuario.getId()}" role="button">Borrar</a>
                     
                 </div>
             </div>

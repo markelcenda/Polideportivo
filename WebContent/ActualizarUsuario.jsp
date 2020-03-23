@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-    <%@page import="modelo.bean.Usuario"%>
-    
-    <%Usuario usuario=(Usuario) request.getAttribute("usuario"); %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
     
 <!doctype html>
 <html lang="en">
@@ -28,21 +26,21 @@
   
   <form action="ModificarUsuario" method="POST">
   
-  <input type="hidden" name="id" value="<%=usuario.getId() %>">
+  <input type="hidden" name="id" value="${usuario.getId()}">
   	
   	 <div class="form-group">
     	<label for="nombre">Nombre y apellido:</label>
-    	<input type="text" class="form-control" id="nombreApellido" name="nombreApellido" value="<%=usuario.getNombreApellido()%>">
+    	<input type="text" class="form-control" id="nombreApellido" name="nombreApellido" value="${usuario.getNombreApellido()}">
     </div>
     
     <div class="form-group">
     	<label for="dias_semana">DNI:</label>
-    	<input type="text" class="form-control" id="dni" name="dni" value="<%=usuario.getDni()%>">
+    	<input type="text" class="form-control" id="dni" name="dni" value="${usuario.getDni()}">
     </div>
     
     <div class="form-group">
     	<label for="dias_semana">Codigo:</label>
-    	<input type="text" class="form-control" id="codigo" name="codigo" value="<%=usuario.getCodigo()%>">
+    	<input type="text" class="form-control" id="codigo" name="codigo" value="${usuario.getCodigo()}">
     </div>
      
   	<button type="submit" class="btn btn-primary">Submit</button>

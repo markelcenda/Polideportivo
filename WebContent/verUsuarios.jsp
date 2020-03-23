@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-    <%@page import="java.util.ArrayList" %>
-    <%@page import="modelo.bean.Usuario" %>
     
-    <%
-    ArrayList<Usuario> usuarios= (ArrayList<Usuario>) request.getAttribute("usuarios");
-    %>
+    
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+    
+    
     
 <!doctype html>
 <html lang="en">
@@ -40,23 +39,20 @@
       <th scope="col">ACCIONES</th>
     </tr>
   </thead>
-  
-  <%for(int i=0; i<usuarios.size(); i++){
-	  Usuario usuario=usuarios.get(i);
-   %>
-   <tr>
-  <td><%=usuario.getId() %></td>
-  <td><a href="verUsuario?id=<%=usuario.getId()%>"><%=usuario.getNombreApellido()%></a></td>
-  <td><%=usuario.getDni() %></td>
-  <td><%=usuario.getCodigo() %></td>
+   <c:forEach items="${usuarios}" var="usuario">
+   
+    <tr>
+  <td>${usuario.getId()}</td>
+  <td><a href="verUsuario?id=${usuario.getId()}">${usuario.getNombreApellido()}</a></td>
+  <td>${usuario.getDni()} </td>
+  <td>${usuario.getCodigo()} </td>
   <td>
-  		<a class="btn btn-success text-white btn-md" href="ActualizarUsuario?id=<%=usuario.getId()%>" role="button">Editar</a>
-  		<a class="btn btn-danger btn-md" href="EliminarUsuario?id=<%=usuario.getId()%>" role="button">Borrar</a>
+  		<a class="btn btn-success text-white btn-md" href="ActualizarUsuario?id=${usuario.getId()}" role="button">Editar</a>
+  		<a class="btn btn-danger btn-md" href="EliminarUsuario?id=${usuario.getId()}" role="button">Borrar</a>
   </td>
   </tr>
-  <% } %>
-  
-  
+   
+   </c:forEach>
   </table>
   
   </div>
