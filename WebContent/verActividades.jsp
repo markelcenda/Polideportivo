@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-    <%@page import="java.util.ArrayList" %>
-    <%@page import="modelo.bean.Actividad" %>
-    
-    <%
-    ArrayList<Actividad> actividades= (ArrayList<Actividad>)request.getAttribute("actividades");
-    %>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
     
 <!doctype html>
 <html lang="en">
@@ -39,25 +34,22 @@
   </thead>
   <tbody>
   
-  <%for(int i=0; i<actividades.size(); i++) {
-  Actividad actividad=actividades.get(i);
-  %>
+  <c:forEach items="${actividades}" var="actividad">
   
-    <tr>
-      <th><%=actividad.getNombre() %></th>
-      <td><%=actividad.getFecha_inicio() %></td>
-      <td><%=actividad.getDias() %></td>
+   <tr>
+      <th>${actividad.getNombre()}</th>
+      <td>${actividad.getFecha_inicio()}</td>
+      <td>${actividad.getDias()}</td>
       <td>
-      <a class="btn btn-primary btn-md" href="verActividad?id=<%=actividad.getId()%>">VER</a>
-      <a class="btn btn-danger btn-md" href="EliminarActividad?id=<%=actividad.getId()%>" role="button">Borrar</a> 
-      <a class="btn btn-warning btn-md text-white" href="ActualizarActividad?id=<%=actividad.getId()%>" role="button">Editar</a> 
-      
+      	<a class="btn btn-primary btn-md" href="verActividad?id=${actividad.getId()}">VER</a>
+      	<a class="btn btn-danger btn-md" href="EliminarActividad?id=${actividad.getId()}" role="button">Borrar</a> 
+      	<a class="btn btn-warning btn-md text-white" href="ActualizarActividad?id=${actividad.getId()}" role="button">Editar</a> 
       </td>
-      
-      
     </tr>
-    
-    <%} %>
+  
+  </c:forEach>
+  
+   
   
   </tbody>
 </table>
