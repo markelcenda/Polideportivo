@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.bean.Usuario;
 import modelo.dao.ModeloInscripcion;
+import modelo.dao.ModeloUsuario;
 
 /**
  * Servlet implementation class InscribirUsuario
@@ -40,8 +42,10 @@ public class InscribirUsuario extends HttpServlet {
 		int idActividad=Integer.parseInt(request.getParameter("idactividad"));
 		
 		ModeloInscripcion modeloInscripcion=new ModeloInscripcion();
-		modeloInscripcion.inscribir(idUsuario, idActividad);
 		
+		if(!modeloInscripcion.estaInscrito(idUsuario, idActividad)) {
+			modeloInscripcion.inscribir(idUsuario, idActividad);
+		}
 		response.sendRedirect("verActividad?id=" + idActividad);
 		
 		
