@@ -108,8 +108,8 @@
 		<c:forEach items="${actividad.getIscripciones()}" var="inscripcion">
 		<tr>
 		<td><h5>${inscripcion.getUsuario().getNombreApellido()} - ${inscripcion.getUsuario().getCodigo()} </h5></td>
-		<td><a class="btn btn-danger btn-md text-center" href="BorrarInscripcion" role="button">Borrar inscripcion</a></td>
-		</tr>
+		<td><a class="btn btn-danger btn-md text-center" href="BorrarInscripcion?idActividad=${actividad.getId()}&idUsuario=${inscripcion.getUsuario().getId()}" role="button">Borrar inscripcion</a></td>
+		</tr> 
 		</c:forEach>
 		
 		</table>
