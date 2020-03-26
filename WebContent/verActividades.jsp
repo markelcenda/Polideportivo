@@ -22,6 +22,23 @@
   
   <h1 class="text-center">Actividades</h1>
   
+  <div class="row justify-content-center align-items-center">
+  
+  <div class="col-4 text-center">
+  
+  <form action="BuscarActividad" method="POST">
+  
+  		<div class="form-group">
+        	<input type="text" class="form-control" id="buscaractividad" name="buscaractividad" placeholder="Buscar actividad">
+       	    <button type="submit" class="btn btn-primary">Submit</button>
+  		</div>
+  	
+	</form>
+  
+  </div>
+  
+  </div>
+  
   <div class="row justify-content-center mt-2 text-center">
   <div class="col">
   
@@ -31,6 +48,7 @@
       <th scope="col">NOMBRE</th>
       <th scope="col">FECHA INICIO</th>
       <th scope="col">DIAS SEMANA</th>
+      <th scope="col">INSKRIPZIO KOPURUA</th>
       <th scope="col">ACCIONES</th>
     </tr>
   </thead>
@@ -42,6 +60,10 @@
       <th>${actividad.getNombre()}</th>
       <td>${actividad.getFecha_inicio()}</td>
       <td>${actividad.getDias()}</td>
+      <td><h2>
+  		  		<span class="badge badge-light">${actividad.iscripciones.size()}</span>
+		  </h2>
+	  </td>
       <td>
       	<a class="btn btn-primary btn-md" href="verActividad?id=${actividad.getId()}">VER</a>
       	<a class="btn btn-danger btn-md" href="EliminarActividad?id=${actividad.getId()}" role="button">Borrar</a> 
