@@ -61,7 +61,7 @@
       <td>${actividad.getFecha_inicio()}</td>
       <td>${actividad.getDias()}</td>
       <td><h2>
-  		  		<span class="badge badge-light">${actividad.iscripciones.size()}</span>
+  		  		<span class="badge badge-light"></span>
 		  </h2>
 	  </td>
       <td>
