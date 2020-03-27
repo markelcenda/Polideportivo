@@ -22,6 +22,23 @@
   
   <h1 class="text-center">Usuarios</h1>
   
+   <div class="row justify-content-center align-items-center">
+  
+  <div class="col-4 text-center">
+  
+  <form action="BuscarUsuario" method="POST">
+  
+  		<div class="form-group">
+        	<input type="text" class="form-control" id="buscarusuario" name="buscarusuario" placeholder="Buscar usuarios">
+       	    <button type="submit" class="btn btn-primary">Submit</button>
+  		</div>
+  	
+	</form>
+  
+  </div>
+  
+  </div>
+  
   <div class="row justify-content-center text-center mt-2">
   
   <div class="col">
