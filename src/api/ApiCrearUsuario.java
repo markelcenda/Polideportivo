@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
+import modelo.bean.MiUsuario;
 import modelo.bean.Usuario;
 import modelo.dao.ModeloUsuario;
 
@@ -47,13 +48,22 @@ public class ApiCrearUsuario extends HttpServlet {
 		
 		JSONObject jsonObject=new JSONObject(jsonUsuario);
 		
-		Usuario usuario=new Usuario();
+		MiUsuario usuario=new MiUsuario();
 		usuario.setNombreApellido(jsonObject.getString("nombreApellido"));
 		usuario.setCodigo(jsonObject.getString("codigo"));
 		usuario.setDni(jsonObject.getString("dni"));
 		
 		ModeloUsuario modeloUsuario=new ModeloUsuario();
-		modeloUsuario.insert(usuario);
+		
+		if(usuario.validar()) {
+			if(modeloUsuario.existCodigo(usuario.getCodigo()) || modeloUsuario.existDni(usuario.getDni()) ) {
+				System.out.println("El codigo o DNI ya han sido utilizados");
+			}else {
+				modeloUsuario.insert(usuario);
+			}
+		}else {
+			System.out.println("La largura del codigo o DNI son incorrectas");
+		}
 		
 		try {
 			modeloUsuario.getConexion().close();
