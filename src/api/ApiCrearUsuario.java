@@ -57,19 +57,20 @@ public class ApiCrearUsuario extends HttpServlet {
 		
 		if(usuario.validar()) {
 			if(modeloUsuario.existCodigo(usuario.getCodigo()) || modeloUsuario.existDni(usuario.getDni()) ) {
-				System.out.println("El codigo o DNI ya han sido utilizados");
+				response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Balidatzean errorea aurkitu da");
 			}else {
 				modeloUsuario.insert(usuario);
+				
+				try {
+					modeloUsuario.getConexion().close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}
 		}else {
-			System.out.println("La largura del codigo o DNI son incorrectas");
-		}
-		
-		try {
-			modeloUsuario.getConexion().close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Balidatzean errorea aurkitu da");
 		}
 		
 		response.setHeader("Access-Control-Allow-Origin","*"); 
