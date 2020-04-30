@@ -6,6 +6,7 @@ import modelo.bean.Usuario;
 
 public class NombreComparator0 implements Comparator<Usuario>{
 
+	
 	@Override
 	public int compare(Usuario u1, Usuario u2) {
 		return u1.getNombreApellido().compareToIgnoreCase(u2.getNombreApellido());
