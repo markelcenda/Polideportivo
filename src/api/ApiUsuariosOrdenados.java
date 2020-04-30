@@ -14,7 +14,10 @@ import org.json.JSONStringer;
 
 import modelo.bean.Usuario;
 import modelo.dao.ModeloUsuario;
+import modelo.util.DniComparator0;
+import modelo.util.DniComparator1;
 import modelo.util.NombreComparator0;
+import modelo.util.NombreComparator1;
 
 /**
  * Servlet implementation class ApiUsuariosOrdenados
@@ -39,7 +42,28 @@ public class ApiUsuariosOrdenados extends HttpServlet {
 		ModeloUsuario modeloUsuario=new ModeloUsuario();
 		ArrayList<Usuario> usuarios=modeloUsuario.selectAll();
 		
-		usuarios.sort(new NombreComparator0());
+		String eremua=request.getParameter("eremua");
+		int ordena=Integer.parseInt(request.getParameter("ordena"));
+		
+		if(eremua.equals("nombreApellido")) {
+			
+			if(ordena==0) {
+				usuarios.sort(new NombreComparator0());
+			}else if(ordena==1) {
+				usuarios.sort(new NombreComparator1());
+			}
+			
+		}else if(eremua.equals("dni")){
+			
+			if(ordena==0) {
+				usuarios.sort(new DniComparator0());
+			}else if(ordena==1) {
+				usuarios.sort(new DniComparator1());
+			}
+			
+		}
+		
+		
 		
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setContentType("application/json");
